@@ -36,7 +36,7 @@ public class Primitives {
     }
 
     public static double convertType(int val, boolean poundInp) {
-        if (poundInp == true) {
+        if (poundInp) {
             return val * 0.45359237d;
         }
         return val / 0.45359237d;
