@@ -1,8 +1,36 @@
 public class Exercise {
     public static void main(String[] args) {
-        System.out.println(calcPosition(1));
-        System.out.println(hasTeen(12, 1, 1));
+        //System.out.println(calcPosition(1));
+        //System.out.println(hasTeen(12, 1, 1));
+        char c;
+
+        c = 'A';
+        
+        switch(c) {
+            case 'A': case 'B': case 'C': case 'D': case 'E':
+                System.out.println("Yep");
+                break;
+            default:
+                System.out.println("Nope");
+                break;
+        }
+        int counter = 0;
+
+        for (int i = 10; true; i++) {
+            if (isPrime(i)) counter++;
+            if (counter >= 3) break;
+        }
     }
+
+    public static boolean isPrime(int n) {
+        if (n == 1) return false;
+        for (int i = 2; i < (long) Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        System.out.println("Prime: " + n);
+        return true;
+    }
+
     public static int calcPosition(int score) {
         if(score > 1000) return 1;
         else if(score > 500) return 2;
@@ -78,5 +106,16 @@ public class Exercise {
         if (n < 10 && n >= 0) s = a[n];
         else s = "OTHER";
         System.out.println(s);
+    }
+    public static boolean isOdd(int n) {
+        return (n >= 0 && n % 2 != 0);
+    }
+    public static int sumOdd(int start, int end) {
+        if (start > end || start < 0) return -1;
+        int result = 0;
+        for (int i = start; i <= end; i++) {
+            result = isOdd(i) ? result + i : result;
+        }
+        return result;
     }
 }
