@@ -20,6 +20,8 @@ public class Exercise {
             if (isPrime(i)) counter++;
             if (counter >= 3) break;
         }
+        //System.out.println(isPalindrome(11211));
+        System.out.println(sumFirstAndLastDigit(202));
     }
 
     public static boolean isPrime(int n) {
@@ -117,5 +119,24 @@ public class Exercise {
             result = isOdd(i) ? result + i : result;
         }
         return result;
+    }
+    public static boolean isPalindrome(int n) {
+        n = Math.abs(n);
+        int revNum = 0;
+        int origNum = n;
+        while (n > 0) {
+            revNum *= 10;
+            revNum += (n % 10);
+            n /= 10;
+        }
+        return revNum == origNum;
+    }
+    public static int sumFirstAndLastDigit(int n) {
+        if (n < 0) return -1;
+        int lastDigit = n % 10;
+        while (n / 10 > 0) {
+            n /= 10;
+        }
+        return n + lastDigit;
     }
 }
