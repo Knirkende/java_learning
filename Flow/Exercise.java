@@ -21,7 +21,9 @@ public class Exercise {
             if (counter >= 3) break;
         }
         //System.out.println(isPalindrome(11211));
-        System.out.println(sumFirstAndLastDigit(202));
+        //System.out.println(sumFirstAndLastDigit(202));
+        //System.out.println(getEvenDigitSum(123456789));
+        System.out.println(hasSharedDigit(9, 28));
     }
 
     public static boolean isPrime(int n) {
@@ -138,5 +140,30 @@ public class Exercise {
             n /= 10;
         }
         return n + lastDigit;
+    }
+    public static int getEvenDigitSum(int n) {
+        int sum = 0;
+        int current = 0;
+        if (n < 0) return -1;
+        while (n > 0) {
+            current = n % 10;
+            sum = current % 2 == 0 ? sum + current : sum; 
+            n /= 10;
+        }
+        return sum;
+    }
+    public static boolean hasSharedDigit(int n1, int n2) {
+        if (n1 < 10 || n1 > 99 || n2 < 10 || n2 > 99) return false;
+        while (n1 > 0) {
+            int inner = n2;
+            int first = n1 % 10;
+            while (inner > 0) {
+                int second = inner % 10;
+                if (first == second) return true;
+                inner /= 10;
+            }
+            n1 /= 10;
+        }
+        return false;
     }
 }
