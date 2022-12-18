@@ -3,7 +3,7 @@ public class Main {
         Example ex = new Example();
         System.out.println(ex.beep);
         for (int i = 1; i <= 5; i++) {
-            StudentPojo s = new StudentPojo(
+            StudentRecord s = new StudentRecord(
                 "123" + i,
                 switch (i) {
                     case 1 -> "one";
@@ -15,6 +15,7 @@ public class Main {
                 },
                 "5445",
                 "blabla");
+                System.out.println(s.id());
         }
     }
 }
