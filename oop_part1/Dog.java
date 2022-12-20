@@ -13,7 +13,22 @@ public class Dog extends Animal {
         this.tailShape = tailShape;
     }
 
-    public void bark() {
+    public void move(String speed) {
+        if (speed == "slow") {
+            makeNoise();
+        }
+    }
+
+    @Override
+    public void makeNoise() {
+        if (type == "Wolf") { // inherited protected field
+            System.out.println("Wooo");
+        } else {
+            bark();
+        }
+    }
+
+    private void bark() {
         System.out.println("Woof");
     }
 }
