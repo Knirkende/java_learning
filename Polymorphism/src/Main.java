@@ -2,8 +2,8 @@
 public class Main {
 	
 	public static void main(String[] args) {
-		Movie why = new Adventure("Bloop");
-		why.watchMovie();
+		Movie theMovie = Movie.getMovie("Adventure", "asd");
+		theMovie.watchMovie();
 	}
 
 }
