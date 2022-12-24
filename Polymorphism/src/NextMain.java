@@ -16,5 +16,13 @@ public class NextMain {
 		
 		var plane = new Comedy("Airplane");
 		plane.watchComedy();
+		
+		Object unknown = Movie.getMovie("A", "Funny bones");
+		
+		if (unknown instanceof Comedy) {
+			((Comedy) unknown).watchMovie();
+		} else if (unknown instanceof Adventure adv) {
+			adv.watchMovie();
+		}
 	}
 }
