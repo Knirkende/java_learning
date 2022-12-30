@@ -1,9 +1,10 @@
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
 	
-	public static void main(String[] args) {
+	public static void main(String... args) { //varargs
 		
 		int[] intArray = new int[10];
 		intArray[5] = 50;
@@ -79,6 +80,21 @@ public class Main {
 		int[] sorted = Exercise.sortDescending(exerc);
 		System.out.println(Arrays.toString(sorted));
 		
+		//varargs		
+		String[] stringArr = "Hello trees of green".split(" ");
+		printText(stringArr);
+		printText("Hello trees of green");
+		printText("Hello", "trees", "of", "green");
+		printText();
+		
+		//exercise 2 driver code
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Comma-separated ints: ");
+		String inp = scanner.nextLine();
+		int[] stuff = readIntegers(inp.split(","));
+		System.out.println(Arrays.toString(stuff));
+		int min = findMin(stuff);
+		System.out.println(min);
 	}
 	
 	private static int[] getRandomArray(int len) {
@@ -91,4 +107,28 @@ public class Main {
 		
 		return newInt;
 	}
+	
+	//varargs
+	private static void printText(String... textArr) {
+		for (String text : textArr) {
+			System.out.println(text);
+		}
+	}
+	
+	//exercise
+	private static int[] readIntegers(String... inp) {
+		int[] integerArr = new int[inp.length];
+		for (int i = 0; i < inp.length; i++) {
+			integerArr[i] = Integer.parseInt(inp[i]);
+		}
+		return integerArr;
+	}
+	
+	//exercise
+	private static int findMin(int[] inp) {
+		int[] inpCp = Arrays.copyOf(inp, inp.length);
+		Arrays.sort(inp);
+		return inp[0];
+	}
+	
 }
