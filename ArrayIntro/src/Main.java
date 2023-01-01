@@ -75,6 +75,18 @@ public class Main {
 		
 		System.out.println(Arrays.equals(s1,  s2));
 		
+		//Nd arrays		
+		int[][] arr = {
+				{1,2,3},
+				{4,5,6},
+				{7,8,9}
+		};		
+		int[][] defaultValArr = new int[3][3];		
+		int[] thisAlsoWorks[] = new int[3][3];
+		
+		//deepToString
+		System.out.println(Arrays.deepToString(arr));
+		
 		//exercise driver code
 		int[] exerc = new int[] {1,2,3,4,5};
 		int[] sorted = Exercise.sortDescending(exerc);
