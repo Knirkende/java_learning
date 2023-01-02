@@ -1,6 +1,8 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 record GroceryItem(String name, String type, int count) {
 	
@@ -57,6 +59,59 @@ public class Main {
 		newList.removeAll(List.of("Three", "Two")); //remove all items in list (difference)
 		newList.retainAll(List.of("Three", "Two")); // keeps indicated items (intersection)	
 		newList.clear(); //remove all
+		
+		// adding elements to ArrayList has a constant amortised time cost ( O(1)* )
+		
+		// LinkedList (is doubly linked)
+		
+		LinkedList<Integer> linked = new LinkedList<>();
+		// add
+		linked.add(1);
+		linked.add(0, 4);
+		linked.add(1, 5);
+		linked.addFirst(6);
+		linked.addLast(7);
+		linked.offer(8); // add as tail
+		linked.offerFirst(9); // add as head
+		linked.offerLast(10); // add as tail
+		linked.push(11); // push to top of stack
+		System.out.println(linked);
+		//remove
+		linked.remove(0); //remove by index
+		linked.remove(); // remove and return first element
+		linked.removeFirst();
+		linked.removeLast();
+		int i = linked.poll(); //remove and return first element
+		System.out.println(i);
+		i = linked.pollFirst(); //remove and return first element
+		System.out.println(i);
+		i = linked.pollLast(); //remove and return last element
+		System.out.println(i);
+		linked.push(11);
+		System.out.println(linked);
+		i = linked.pop(); //remove and return top of the stack (element 0)
+		System.out.println(i);
+		i = linked.get(1); //retrieve element at idx
+		linked.getFirst();
+		linked.getLast();
+		System.out.println(i);
+		linked.indexOf(1);
+		//queue retrieval
+		System.out.println(linked.element()); //retrieve head
+		//stack retrieval
+		System.out.println(linked.peek()); //retrieve head
+		linked.peekFirst(); //equivalent to peek()
+		linked.peekLast();
+		
+		System.out.println(linked);
+		
+		// iterators
+		
+		ListIterator<Integer> iterator = linked.listIterator();
+		
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
 		
 	}
 }
