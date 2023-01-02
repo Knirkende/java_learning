@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.Iterator;
 
 record GroceryItem(String name, String type, int count) {
 	
@@ -111,7 +112,14 @@ public class Main {
 		
 		while (iterator.hasNext()) {
 			System.out.println(iterator.next());
+			// the iterator points to the same obj in memory; modify iterator -> modify list
+			// ListIterator allows add, set and remove
+			// add adds to the next position
 		}
+		
+		//only next() traversal; does not allow add and set
+		Iterator<Integer> anotherIterator = linked.iterator();
+		
 		
 	}
 }
