@@ -106,8 +106,7 @@ public class Main {
 		
 		System.out.println(linked);
 		
-		// iterators
-		
+		// iterators		
 		ListIterator<Integer> iterator = linked.listIterator();
 		
 		while (iterator.hasNext()) {
@@ -119,7 +118,18 @@ public class Main {
 		
 		//only next() traversal; does not allow add and set
 		Iterator<Integer> anotherIterator = linked.iterator();
+				
+		// boxing (turning primitive type into an object)		
+		Integer boxedInt = Integer.valueOf(15);
+		Integer alsoBoxedInt = new Integer(15); //deprecated
+		Integer moreBoxedInt = 15; //autoboxing -> preferred
 		
+		// unboxing
+		int unboxedInt = boxedInt.intValue();
+		int alsoUnboxedInt = alsoBoxedInt; // auto-unboxing -> preferred
 		
+		//arrays, lists and boxing
+		Integer[] wrapperArray = new Integer[5]; // default value is null
+		System.out.println(Arrays.toString(wrapperArray));
 	}
 }

@@ -1,10 +1,18 @@
 import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.ListIterator;
 
+record Place(String name, int distance) {}
+
+class SortByDistance implements Comparator<Place> {	
+	public int compare(Place a, Place b) {
+		return a.distance() - b.distance();
+	}
+}
+
 public class SecondExercise {
-	
 	
 	protected static ArrayList<Place> buildItinerary(String[] names, int[] distances) {
 		
