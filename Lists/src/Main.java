@@ -131,5 +131,23 @@ public class Main {
 		//arrays, lists and boxing
 		Integer[] wrapperArray = new Integer[5]; // default value is null
 		System.out.println(Arrays.toString(wrapperArray));
+		
+		//enum
+		DayOfTheWeek weekDay = DayOfTheWeek.SUNDAY;
+		System.out.println(weekDay.ordinal());
+		System.out.println(weekDay.name());
+		System.out.println(weekDay.label);
+		System.out.println(weekDay.valueOf("SUNDAY"));
+		
+	}
+	
+	enum DayOfTheWeek {
+		SUNDAY(7), MONDAY(1), TUESDAY(2);
+		
+		public final int label;
+		
+		private DayOfTheWeek(int label) {
+			this.label = label;
+		}
 	}
 }
