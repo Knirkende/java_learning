@@ -88,8 +88,8 @@ class IntLinkedList {
 				tail = newNode;
 			} else if (current.getPrevious() == null ) {
 				// pointer is at the head
-				newNode.setNext(current);
-				current.setPrevious(newNode);
+				newNode.setNext(this.head);
+				this.head.setPrevious(newNode);
 				head = newNode;
 			} else {
 				// pointer is at an intermediary node
