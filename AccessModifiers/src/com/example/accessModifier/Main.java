@@ -22,6 +22,7 @@ public class Main {
         System.out.println(sc1.getInstanceNumber());
         System.out.println(sc2.getInstanceNumber());
 
+        SIBTest s = new SIBTest();
     }
 
     public static int multiply(int n) {
