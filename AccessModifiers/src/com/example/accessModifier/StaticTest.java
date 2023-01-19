@@ -1,19 +1,14 @@
 package com.example.accessModifier;
 
-public class StaticTest {
+public record StaticTest(String name) {
     private static int numInstances = 0;
-    private final String name;
 
     public StaticTest(String name) {
         this.name = name;
         numInstances++;
     }
 
-    public int getNumInstances() {
+    public static int getNumInstances() {
         return numInstances;
-    }
-
-    public String getName() {
-        return name;
     }
 }
