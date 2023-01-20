@@ -6,18 +6,31 @@ public class Main {
     public static void main(String[] args) {
         Theatre theatre = new Theatre("Place", 8, 12);
         //theatre.getSeats();
-/*
+
         if (theatre.reserveSeat("H11")) {
             System.out.println("Okay");
         } else {
             System.out.println("No");
         }
+        List<Theatre.Seat> reverseSeats = new ArrayList<>(theatre.getSeats());
+        Collections.reverse(reverseSeats);
+        printList(reverseSeats);
+
+        // comparator
+
+        List<Theatre.Seat> priceSeats = new ArrayList<>(theatre.getSeats());
+        priceSeats.add(theatre.new Seat("B00", 13));
+        priceSeats.add(theatre.new Seat("A00", 13));
+        Collections.sort(priceSeats, Theatre.PRICE_ORDER);
+        printList(priceSeats);
+
+        /*
         if (theatre.reserveSeat("H11")) {
             System.out.println("Okay");
         } else {
             System.out.println("No");
         }
-*/
+
         List<Theatre.Seat> seatCopy = new ArrayList<>(theatre.seats); //shallow copy
         printList(seatCopy);
         // demonstrates shallow copy
@@ -40,7 +53,7 @@ public class Main {
         System.out.println();
         System.out.println("Bubblesorted seatCopy:");
         printList(seatCopy);
-
+*/
     }
     public static void printList(List<Theatre.Seat> list) {
         for(Theatre.Seat seat : list) {
@@ -49,7 +62,7 @@ public class Main {
         System.out.println();
         System.out.println("-----");
     }
-
+/*
     // bubble sort
     public static void sortList(List<? extends Theatre.Seat> list) {
         int n = 0;
@@ -64,4 +77,6 @@ public class Main {
         System.out.println();
         System.out.println("Bubblesort n = " + n);
     }
+    */
+
 }
