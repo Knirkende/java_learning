@@ -9,7 +9,7 @@ public class Theatre {
 
 
     static final Comparator<Seat> PRICE_ORDER;
-
+    // comparator has problem: objects are equal if price is equal (problem for sets, for instance)
     static {
         PRICE_ORDER = new Comparator<Seat>() {
             @Override
