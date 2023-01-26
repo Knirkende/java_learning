@@ -1,6 +1,9 @@
 package com.example.collections;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class GameExample {
     public static void main(String[] args) {
         Map<Integer, Location> locations = new HashMap<>();
@@ -54,34 +57,29 @@ public class GameExample {
 
             // exercise code
 
-            Map<String, String> aliases = new HashMap<>();
-
-            aliases.put("NORTH", "N");
-            aliases.put("SOUTH", "S");
-            aliases.put("WEST", "W");
-            aliases.put("EAST", "E");
-            aliases.put("QUIT", "Q");
-            aliases.put("N", "N");
-            aliases.put("S", "S");
-            aliases.put("W", "W");
-            aliases.put("E", "E");
-            aliases.put("Q", "Q");
+            Map<String, String> aliases = Stream.of(new String[][] {
+                    {"NORTH", "N"},
+                    {"SOUTH", "S"},
+                    {"WEST", "W"},
+                    {"EAST", "E"},
+                    {"QUIT", "Q"}
+            }).collect(Collectors.toMap(data -> data[0], data -> data[1]));
 
             String[] cmd = scanner.nextLine().split(" ");
             String direction = null;
-            for (String kw : cmd) {
-                direction = aliases.get(kw.toUpperCase());
+            if (cmd.length == 1) {
+                direction = cmd[0];
+            } else {
+                for (String kw : cmd) {
+                    direction = aliases.get(kw.toUpperCase());
+                }
             }
-
-
             if (direction != null && exits.containsKey(direction)) {
                 loc = exits.get(direction);
             } else {
                 System.out.println("Invalid choice.");
             }
-
         }
-
     }
 }
 
