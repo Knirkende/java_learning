@@ -53,6 +53,23 @@ final class HeavenlyBody {
         this.satellites = new HashSet<>();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HeavenlyBody that = (HeavenlyBody) o;
+        return Double.compare(
+                that.orbitalPeriod, orbitalPeriod) == 0
+                && Objects.equals(name, that.name)
+                && Objects.equals(satellites, that.satellites
+        );
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
     public String getName() {
         return name;
     }
