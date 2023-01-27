@@ -58,11 +58,7 @@ final class HeavenlyBody {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HeavenlyBody that = (HeavenlyBody) o;
-        return Double.compare(
-                that.orbitalPeriod, orbitalPeriod) == 0
-                && Objects.equals(name, that.name)
-                && Objects.equals(satellites, that.satellites
-        );
+        return Objects.equals(name, that.name);
     }
 
     @Override
