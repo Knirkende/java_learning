@@ -11,25 +11,32 @@ public class Locations implements Map<Integer, Location> {
 
     private static Map<Integer, Location> locations = new HashMap();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
+        //try-with-resources
+        try(FileWriter locFile = new FileWriter("locations.txt");
+        FileWriter dirFile = new FileWriter("directions.txt")) {
+            for (Location location : locations.values()) {
+                locFile.write(location.getLocationID() + "," + location.getDescription() + "\n");
+                for (String direction : location.getExits().keySet()) {
+                    dirFile.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
+                }
+            }
+        }
+
+        /*
         FileWriter locFile = null;
         try {
             locFile = new FileWriter("locations.txt");
             for (Location location : locations.values()) {
                 locFile.write(location.getLocationID() + "," + location.getDescription() + "\n");
+                //throw new IOException("test exception");
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
         } finally {
-            try {
-                if(locFile != null) {
-                    locFile.close();
-                }
-            } catch(IOException e) {
-                e.printStackTrace();
+            if(locFile != null) {
+                System.out.println("Closing file");
+                locFile.close();
             }
-        }
-
+        } */
     }
 
     static {
