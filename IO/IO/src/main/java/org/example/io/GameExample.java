@@ -71,7 +71,7 @@ class Location {
         this.exits = new HashMap<String, Integer>();
     }
 
-    public void addExit(String direction, int location) {
+    protected void addExit(String direction, int location) {
         exits.put(direction, location);
     }
 

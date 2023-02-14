@@ -1,11 +1,10 @@
 package org.example.io;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Locations implements Map<Integer, Location> {
 
@@ -40,6 +39,50 @@ public class Locations implements Map<Integer, Location> {
     }
 
     static {
+
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new FileReader("locations.txt"));
+            scanner.useDelimiter(",");
+            while(scanner.hasNextLine()) {
+                int loc = scanner.nextInt();
+                scanner.skip(scanner.delimiter());
+                String description = scanner.nextLine();
+                System.out.println("Imported loc: " + loc + " : " + description);
+                //Map<String, Integer> tempExit = new HashMap<>();
+                locations.put(loc, new Location(loc, description));
+            }
+        } catch (IOException e) {
+        } finally {
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
+
+        //buffered reader
+        try {
+            scanner = new Scanner(new BufferedReader(new FileReader("directions.txt")));
+            scanner.useDelimiter(",");
+            while (scanner.hasNextLine()) {
+                int loc = scanner.nextInt();
+                scanner.skip(scanner.delimiter());
+                String direction = scanner.next();
+                scanner.skip(scanner.delimiter());
+                String dest = scanner.nextLine();
+                int destination = Integer.parseInt(dest);
+                System.out.println(loc + ": " + direction + ": " + destination);
+                Location location = locations.get(loc);
+                location.addExit(direction, destination);
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
+
+        /*
         String[] descriptions = {"zeroeth", "first", "second", "third", "fourth", "fifth"};
 
         for (int i = 0; i < descriptions.length; i++) {
@@ -65,6 +108,7 @@ public class Locations implements Map<Integer, Location> {
         locations.get(5).addExit("S", 1);
         locations.get(5).addExit("W", 2);
         locations.get(5).addExit("Q", 0);
+    */
     }
 
     @Override
